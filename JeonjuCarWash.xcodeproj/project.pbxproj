@@ -7,21 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4DC09D251F9C967100ED29A0 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC09D241F9C967100ED29A0 /* TableViewController.swift */; };
+		4DC09D2B1F9C999700ED29A0 /* CarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC09D2A1F9C999700ED29A0 /* CarCell.swift */; };
 		4DC98FB41F9C6F1000E9B108 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC98FB31F9C6F1000E9B108 /* AppDelegate.swift */; };
-		4DC98FB61F9C6F1000E9B108 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC98FB51F9C6F1000E9B108 /* ViewController.swift */; };
 		4DC98FB91F9C6F1000E9B108 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC98FB71F9C6F1000E9B108 /* Main.storyboard */; };
 		4DC98FBB1F9C6F1000E9B108 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DC98FBA1F9C6F1000E9B108 /* Assets.xcassets */; };
 		4DC98FBE1F9C6F1000E9B108 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC98FBC1F9C6F1000E9B108 /* LaunchScreen.storyboard */; };
+		4DC98FC81F9C717900E9B108 /* CarVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC98FC71F9C717900E9B108 /* CarVO.swift */; };
+		4DC98FCA1F9C727B00E9B108 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC98FC91F9C727B00E9B108 /* MainViewController.swift */; };
+		4DD4A2CC1F9E09B00091DB81 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4A2CB1F9E09B00091DB81 /* DetailViewController.swift */; };
+		F6C86DB64EABA5574DBAB9D8 /* Pods_JeonjuCarWash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00D778213B275551EEC9BF4 /* Pods_JeonjuCarWash.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4DC09D241F9C967100ED29A0 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		4DC09D2A1F9C999700ED29A0 /* CarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCell.swift; sourceTree = "<group>"; };
 		4DC98FB01F9C6F1000E9B108 /* JeonjuCarWash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JeonjuCarWash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC98FB31F9C6F1000E9B108 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4DC98FB51F9C6F1000E9B108 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4DC98FB81F9C6F1000E9B108 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4DC98FBA1F9C6F1000E9B108 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4DC98FBD1F9C6F1000E9B108 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4DC98FBF1F9C6F1000E9B108 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DC98FC71F9C717900E9B108 /* CarVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarVO.swift; sourceTree = "<group>"; };
+		4DC98FC91F9C727B00E9B108 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		4DD4A2CB1F9E09B00091DB81 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		679147660B82EC89C8AD7686 /* Pods-JeonjuCarWash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JeonjuCarWash.release.xcconfig"; path = "Pods/Target Support Files/Pods-JeonjuCarWash/Pods-JeonjuCarWash.release.xcconfig"; sourceTree = "<group>"; };
+		6C96DCCCBCAD953610CF3BC9 /* Pods-JeonjuCarWash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JeonjuCarWash.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JeonjuCarWash/Pods-JeonjuCarWash.debug.xcconfig"; sourceTree = "<group>"; };
+		D00D778213B275551EEC9BF4 /* Pods_JeonjuCarWash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JeonjuCarWash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6C86DB64EABA5574DBAB9D8 /* Pods_JeonjuCarWash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +53,8 @@
 			children = (
 				4DC98FB21F9C6F1000E9B108 /* JeonjuCarWash */,
 				4DC98FB11F9C6F1000E9B108 /* Products */,
+				9BCDEA6F3711F4D4766062C2 /* Pods */,
+				AA99315748B7E995AE1200ED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +70,34 @@
 			isa = PBXGroup;
 			children = (
 				4DC98FB31F9C6F1000E9B108 /* AppDelegate.swift */,
-				4DC98FB51F9C6F1000E9B108 /* ViewController.swift */,
+				4DC98FC71F9C717900E9B108 /* CarVO.swift */,
+				4DC98FC91F9C727B00E9B108 /* MainViewController.swift */,
+				4DC09D241F9C967100ED29A0 /* TableViewController.swift */,
+				4DD4A2CB1F9E09B00091DB81 /* DetailViewController.swift */,
+				4DC09D2A1F9C999700ED29A0 /* CarCell.swift */,
 				4DC98FB71F9C6F1000E9B108 /* Main.storyboard */,
 				4DC98FBA1F9C6F1000E9B108 /* Assets.xcassets */,
 				4DC98FBC1F9C6F1000E9B108 /* LaunchScreen.storyboard */,
 				4DC98FBF1F9C6F1000E9B108 /* Info.plist */,
 			);
 			path = JeonjuCarWash;
+			sourceTree = "<group>";
+		};
+		9BCDEA6F3711F4D4766062C2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6C96DCCCBCAD953610CF3BC9 /* Pods-JeonjuCarWash.debug.xcconfig */,
+				679147660B82EC89C8AD7686 /* Pods-JeonjuCarWash.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AA99315748B7E995AE1200ED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D00D778213B275551EEC9BF4 /* Pods_JeonjuCarWash.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +107,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4DC98FC21F9C6F1000E9B108 /* Build configuration list for PBXNativeTarget "JeonjuCarWash" */;
 			buildPhases = (
+				CAF988C4D1A6D5FD73246A1A /* [CP] Check Pods Manifest.lock */,
 				4DC98FAC1F9C6F1000E9B108 /* Sources */,
 				4DC98FAD1F9C6F1000E9B108 /* Frameworks */,
 				4DC98FAE1F9C6F1000E9B108 /* Resources */,
+				02B13941052DCBBE02E92BFB /* [CP] Embed Pods Frameworks */,
+				0EE2C5D8B499224EBD7D1903 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,13 +170,72 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		02B13941052DCBBE02E92BFB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JeonjuCarWash/Pods-JeonjuCarWash-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0EE2C5D8B499224EBD7D1903 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-JeonjuCarWash/Pods-JeonjuCarWash-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JeonjuCarWash/Pods-JeonjuCarWash-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CAF988C4D1A6D5FD73246A1A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JeonjuCarWash-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4DC98FAC1F9C6F1000E9B108 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DC98FB61F9C6F1000E9B108 /* ViewController.swift in Sources */,
+				4DC98FC81F9C717900E9B108 /* CarVO.swift in Sources */,
+				4DC09D251F9C967100ED29A0 /* TableViewController.swift in Sources */,
 				4DC98FB41F9C6F1000E9B108 /* AppDelegate.swift in Sources */,
+				4DD4A2CC1F9E09B00091DB81 /* DetailViewController.swift in Sources */,
+				4DC09D2B1F9C999700ED29A0 /* CarCell.swift in Sources */,
+				4DC98FCA1F9C727B00E9B108 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +370,7 @@
 		};
 		4DC98FC31F9C6F1000E9B108 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C96DCCCBCAD953610CF3BC9 /* Pods-JeonjuCarWash.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +386,7 @@
 		};
 		4DC98FC41F9C6F1000E9B108 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 679147660B82EC89C8AD7686 /* Pods-JeonjuCarWash.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
