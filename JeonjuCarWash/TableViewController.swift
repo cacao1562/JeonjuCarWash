@@ -70,7 +70,7 @@ class TableViewController : UITableViewController {
             let movieinfo = self.carItem[path!.row]  //api 영화 데이터배열 중에서 선택된 행에 대한 데이터 추출
             NSLog("///Log data value /// \n \(movieinfo)")
             
-            let detailVC = segue.destination as? DetailViewController  //영화 데이터를 찾은다음, 목적지 뷰 컨트롤러의 mvo 변수에 대입
+            let detailVC = segue.destination as? DetailViewController  
             
             detailVC?.param = movieinfo
         }

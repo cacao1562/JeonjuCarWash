@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4DBF0B351FA2301B0027C3BB /* PanoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBF0B341FA2301B0027C3BB /* PanoView.swift */; };
 		4DC09D251F9C967100ED29A0 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC09D241F9C967100ED29A0 /* TableViewController.swift */; };
 		4DC09D2B1F9C999700ED29A0 /* CarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC09D2A1F9C999700ED29A0 /* CarCell.swift */; };
 		4DC98FB41F9C6F1000E9B108 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC98FB31F9C6F1000E9B108 /* AppDelegate.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4DBF0B341FA2301B0027C3BB /* PanoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanoView.swift; sourceTree = "<group>"; };
 		4DC09D241F9C967100ED29A0 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		4DC09D2A1F9C999700ED29A0 /* CarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCell.swift; sourceTree = "<group>"; };
 		4DC98FB01F9C6F1000E9B108 /* JeonjuCarWash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JeonjuCarWash.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +76,7 @@
 				4DC98FC91F9C727B00E9B108 /* MainViewController.swift */,
 				4DC09D241F9C967100ED29A0 /* TableViewController.swift */,
 				4DD4A2CB1F9E09B00091DB81 /* DetailViewController.swift */,
+				4DBF0B341FA2301B0027C3BB /* PanoView.swift */,
 				4DC09D2A1F9C999700ED29A0 /* CarCell.swift */,
 				4DC98FB71F9C6F1000E9B108 /* Main.storyboard */,
 				4DC98FBA1F9C6F1000E9B108 /* Assets.xcassets */,
@@ -236,6 +239,7 @@
 				4DD4A2CC1F9E09B00091DB81 /* DetailViewController.swift in Sources */,
 				4DC09D2B1F9C999700ED29A0 /* CarCell.swift in Sources */,
 				4DC98FCA1F9C727B00E9B108 /* MainViewController.swift in Sources */,
+				4DBF0B351FA2301B0027C3BB /* PanoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

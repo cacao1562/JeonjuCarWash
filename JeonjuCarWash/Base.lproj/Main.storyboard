@@ -116,35 +116,63 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="세차장이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fJ-7T-Uxw">
-                                <rect key="frame" x="43" y="134" width="316" height="21"/>
+                                <rect key="frame" x="11" y="96" width="288" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="주소" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ut4-F2-0aP">
-                                <rect key="frame" x="43" y="179" width="316" height="46"/>
+                                <rect key="frame" x="11" y="152" width="316" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="사장이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hui-z2-wAL">
-                                <rect key="frame" x="43" y="304" width="103" height="21"/>
+                                <rect key="frame" x="11" y="212" width="103" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="데이터수정일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46i-eC-P50">
-                                <rect key="frame" x="43" y="355" width="126" height="21"/>
+                                <rect key="frame" x="201" y="213" width="126" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="vr_view" translatesAutoresizingMaskIntoConstraints="NO" id="uej-Uq-TQC">
+                                <rect key="frame" x="10" y="314" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqZ-Qf-baV">
+                                <rect key="frame" x="58" y="314" width="110" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="Panorama View"/>
+                                <connections>
+                                    <segue destination="asj-X4-i3i" kind="show" identifier="segue_panoview" id="qW5-Z9-Axi"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star1" translatesAutoresizingMaskIntoConstraints="NO" id="aft-NJ-1Xa">
+                                <rect key="frame" x="319" y="77" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="즐겨찾기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPS-FW-lkr">
+                                <rect key="frame" x="309" y="123" width="60" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_call_3@" translatesAutoresizingMaskIntoConstraints="NO" id="TGT-eF-I7h">
+                                <rect key="frame" x="10" y="266" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m5k-tD-K56">
-                                <rect key="frame" x="43" y="250" width="172" height="30"/>
+                                <rect key="frame" x="58" y="271" width="130" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="전화번호"/>
                                 <connections>
@@ -159,6 +187,7 @@
                         <outlet property="address" destination="Ut4-F2-0aP" id="Xnr-ZE-oFw"/>
                         <outlet property="ceoname" destination="Hui-z2-wAL" id="KrA-Gg-Rh2"/>
                         <outlet property="regdate" destination="46i-eC-P50" id="Fsv-NW-VTI"/>
+                        <outlet property="star_image" destination="aft-NJ-1Xa" id="tZw-GC-SIM"/>
                         <outlet property="tel" destination="m5k-tD-K56" id="BB0-PF-bfb"/>
                         <outlet property="washname" destination="9fJ-7T-Uxw" id="5L9-zN-PfG"/>
                     </connections>
@@ -166,6 +195,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AdD-9U-CJw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2104.8000000000002" y="48.125937031484263"/>
+        </scene>
+        <!--Pano View-->
+        <scene sceneID="B2f-bs-UWg">
+            <objects>
+                <viewController id="asj-X4-i3i" customClass="PanoView" customModule="JeonjuCarWash" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MIL-7M-BUB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="a1z-gf-to5"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="99A-p0-Enx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2876" y="41"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hki-sr-fEo">
@@ -187,6 +231,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_call_3@" width="72" height="72"/>
         <image name="ic_local_car_wash_3@" width="72" height="72"/>
+        <image name="star1" width="128" height="128"/>
+        <image name="vr_view" width="128" height="106"/>
     </resources>
 </document>
