@@ -4,26 +4,25 @@ import UIKit
 
 class TableViewController : UITableViewController {
     
-    var obj = MainViewController()
+    
     var carItem : [CarVO] = []
     
+    var lat : Double?
+    var lon : Double?
+    var myaddress : String?
+    
+    var bookmark = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         // self.carItem = obj.list
         self.tableView.reloadData()
     }
     
-    @IBAction func moreBtn(_ sender: Any) {
-        
-        obj.page += 1
-        obj.callCarwashApi()
-        self.carItem.removeAll()
-        self.carItem = obj.list
-        self.tableView.reloadData()
-    }
-    
+
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.carItem.count
@@ -73,6 +72,12 @@ class TableViewController : UITableViewController {
             let detailVC = segue.destination as? DetailViewController  
             
             detailVC?.param = movieinfo
+            detailVC?.lat = self.lat!
+            detailVC?.lon = self.lon!
+            detailVC?.myaddress = self.myaddress!
+            
+          
+            
         }
     
     

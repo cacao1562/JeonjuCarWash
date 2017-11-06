@@ -12,11 +12,11 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
     var original_address_latitude:CLLocationDegrees = 0.0
     var original_address_longitude:CLLocationDegrees = 0.0
     var mapView:GMSMapView? = nil //구글맵 뷰 객체//
-    var panoview:GMSPanoramaView? = nil
+   
     var subview : UIView? = nil
     var subbutton : UIButton? = nil
     var subbutton2 : UIButton? = nil
-    var locationManager: CLLocationManager!
+    var locationManager: CLLocationManager = CLLocationManager()
 
     
     var page = 1
@@ -25,25 +25,21 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
         var datalist = [CarVO]()
         return datalist
     }()
-    var list2 : [CarVO] = []
     
-    var carwash = CarVO()
-    
-    var kirometer : [Double] = []
-    var kirometer2 : [Double] = []
+    var carwash : CarVO!
     
     var elementTemp = ""
     
-    var datalist : [[String:String]] = [[:]]
-    var detailData : [String:String] = [:]
+    var address : String?
+    
     var blank: Bool = false
     
     
-    var washItems = [[String : String]]() // 영화 item Dictional Array
-    var washItem = [String: String]()     // 영화 item Dictionary
-    
-    var pubTitle = "" // 영화 제목
-    var contents = "" // 영화 내용
+//    var washItems = [[String : String]]() // 영화 item Dictional Array
+//    var washItem = [String: String]()     // 영화 item Dictionary
+//
+//    var pubTitle = "" // 영화 제목
+//    var contents = "" // 영화 내용
     
   
     
@@ -52,24 +48,28 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
         
         super.viewDidLoad()
         callCarwashApi()
+        self.navigationController?.navigationBar.backgroundColor = UIColor.purple
         
-        self.locationManager = CLLocationManager()
-        self.locationManager.delegate = self
-        //locationManager.requestWhenInUseAuthorization()
-        self.locationManager.requestAlwaysAuthorization()
+        
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        //self.locationManager = CLLocationManager()
+        self.locationManager.delegate = self
+        //self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.requestAlwaysAuthorization()
+        
         self.locationManager.startUpdatingLocation()
+      //  self.locationManager.startUpdatingLocation()
         self.locationManager.pausesLocationUpdatesAutomatically = false
-        
-        
+       
         //구글맵 설정//
-        let camera = GMSCameraPosition.camera(withLatitude: self.original_address_latitude, longitude: self.original_address_longitude, zoom: 16)
-        self.mapView = GMSMapView.map(withFrame: self.CGRectMake(0, 65, self.view.frame.width, self.view.frame.height-65), camera:camera)
+        let camera = GMSCameraPosition.camera(withLatitude: 35.823925, longitude: 127.147863, zoom: 16)
+        self.mapView = GMSMapView.map(withFrame: self.CGRectMake(0, 0, self.view.frame.width, self.view.frame.height), camera:camera)
         
         //이벤트 등록//
+        
         self.mapView?.delegate = self
-        //        self.locationManager.delegate = self
-        //        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.delegate = self
+        //  self.locationManager.requestAlwaysAuthorization()
         
         self.mapView?.mapType = .normal  //지도의 타입 변경가능//
         self.mapView?.isIndoorEnabled = false  //실내지도 on/off설정//
@@ -77,35 +77,23 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
         self.mapView?.settings.compassButton = true  //나침반 표시//
         self.mapView?.settings.myLocationButton = true  //나의 위치정보 알기 버튼//
         
-         self.view.addSubview(self.mapView!)
+        self.view.addSubview(self.mapView!)
         
-        self.subview = UIView()
-        self.subbutton = UIButton(type: UIButtonType.system)
-        self.subbutton2 = UIButton(type: UIButtonType.system)
+        for row in self.list {
+            let km = distance(lat1: self.original_address_latitude, lng1: self.original_address_longitude, lat2: row.latitude!, lng2: row.longitude!)
+            row.kirometer = km
+        }
         
-        self.subview?.frame = CGRect(x: 0, y: self.view.frame.height/2+110, width: self.view.frame.width, height: self.view.frame.size.height/2-110)
-        self.subview?.backgroundColor = UIColor.white
-        self.subview?.layer.cornerRadius = 10
+        //현재위치로부터 거리값이 작은순으로 정렬
+        self.list.sort(by: { (min, max) -> Bool in
+            min.kirometer! < max.kirometer!
+        })
         
-        self.subbutton?.frame = CGRect(x: 0, y: (self.subview?.frame.size.height)!/3*2, width: self.view.frame.width/2, height: (self.subview?.frame.size.height)!/3 )
-        self.subbutton?.setTitle("자세히 보기", for: UIControlState.normal)
-        self.subbutton?.backgroundColor = UIColor.gray
-        self.subbutton?.layer.cornerRadius = 10
-       
-        self.subbutton2?.frame = CGRect(x: self.view.frame.width/2, y: (self.subview?.frame.size.height)!/3*2, width: self.view.frame.width/2, height: (self.subview?.frame.size.height)!/3 )
-        self.subbutton2?.setTitle("닫 기", for: UIControlState.normal)
-        self.subbutton2?.backgroundColor = UIColor.gray
-        self.subbutton2?.layer.cornerRadius = 10
-       
-        
-        self.subview?.addSubview(self.subbutton!)
-        self.subview?.addSubview(self.subbutton2!)
-        
-        
-        self.view.addSubview(self.subview!)
-        
-        
-        self.subview?.isHidden = true
+
+        let plist = UserDefaults.standard
+        let item = [String]()
+        plist.set(item, forKey: "item")
+        plist.synchronize()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -122,34 +110,96 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
             print ("latitude: \(coor.latitude)")
             print ("longitude: \(coor.longitude)")
             
+         let camera = GMSCameraPosition.camera(withLatitude: coor.latitude, longitude: coor.longitude, zoom: 16)
+     //       self.mapView?.animate(toViewingAngle: 45)
+           self.mapView?.animate(to: camera)
             
+            let location = CLLocation(latitude: coor.latitude, longitude: coor.longitude)
+            let geoCoder = CLGeocoder()
+            geoCoder.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
+                if error != nil {
+                    NSLog("\(error)")
+                    return
+                }
+                guard let placemark = placemarks?.first,
+                    let addrList = placemark.addressDictionary?["FormattedAddressLines"] as? [String] else {
+                        return
+                }
+                let address = addrList.joined(separator: " ")
+//                let obj = DetailViewController()
+//                obj.lat = coor.latitude
+//                obj.lon = coor.longitude
+//                obj.which = address
+                self.address = address
+                print("현재주소 ==== \(address)")
+            }
             
+            self.locationManager.stopUpdatingLocation()
         }
     }
     
-    func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
+ 
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        print("viewWillAppear")
+        print("lat =  \(self.original_address_latitude)")
+        print("lon = \(self.original_address_longitude)")
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
  
-        self.locationManager.stopUpdatingLocation()
+     
         
+        
+      //  self.view = self.mapView!
+        
+        self.subview = UIView()
+        self.subbutton = UIButton(type: UIButtonType.system)
+        self.subbutton2 = UIButton(type: UIButtonType.system)
+        
+        self.subview?.frame = CGRect(x: 0, y: self.view.frame.height/2+110, width: self.view.frame.width, height: self.view.frame.size.height/2-110)
+        self.subview?.backgroundColor = UIColor.white
+        self.subview?.layer.cornerRadius = 10
+        
+        self.subbutton?.frame = CGRect(x: 0, y: (self.subview?.frame.size.height)!/3*2, width: self.view.frame.width/2, height: (self.subview?.frame.size.height)!/3 )
+        self.subbutton?.setTitle("자세히 보기", for: UIControlState.normal)
+        self.subbutton?.backgroundColor = UIColor.gray
+        self.subbutton?.layer.cornerRadius = 10
+        
+        self.subbutton2?.frame = CGRect(x: self.view.frame.width/2, y: (self.subview?.frame.size.height)!/3*2, width: self.view.frame.width/2, height: (self.subview?.frame.size.height)!/3 )
+        self.subbutton2?.setTitle("닫 기", for: UIControlState.normal)
+        self.subbutton2?.backgroundColor = UIColor.gray
+        self.subbutton2?.layer.cornerRadius = 10
+        
+        
+        self.subview?.addSubview(self.subbutton!)
+        self.subview?.addSubview(self.subbutton2!)
+        
+        
+        self.view.addSubview(self.subview!)
+        
+        
+        self.subview?.isHidden = true
         for row in self.list {
             let position = CLLocationCoordinate2D(latitude: row.latitude!, longitude: row.longitude!)
             let marker = GMSMarker()
             marker.position = position
             marker.snippet = row.washName
             marker.appearAnimation = .pop
+            
             //                    marker.title = row.washName
             marker.map = self.mapView  //nil 마커 제거
-        }
+
+            }
+
         
-        
-        
-        
-        
+        print("viewDidAppear")
+        print("lat =  \(self.original_address_latitude)")
+        print("lon = \(self.original_address_longitude)")
         print("서울역-강남역 거리 :\(distance(lat1: 37.554521, lng1: 126.9684596, lat2: 37.4979462, lng2: 127.0254323))")
         // 서울역 - 강남역 거리
         
@@ -161,9 +211,29 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
 
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         print("인포 윈도우")
-        self.subbutton2?.setTitle(marker.snippet!, for: UIControlState.normal)
-        self.subview?.isHidden = false
+        for row in self.list {
+            if (row.washName! == marker.snippet!) {
+                print("row washName = \(row.washName!)")
+                
+                
+                guard let uvc = self.storyboard?.instantiateViewController(withIdentifier: "DetailView") as? DetailViewController else {
+                    return
+                }
+                uvc.param = row
+                uvc.lat = self.original_address_latitude
+                uvc.lon = self.original_address_longitude
+                uvc.myaddress = self.address!
+                
+                self.navigationController?.pushViewController(uvc, animated: true)
+                }
+        //let movieinfo = self.list[path!.row]  //api 영화 데이터배열 중에서 선택된 행에 대한 데이터 추출
+       // NSLog("///Log data value /// \n \(movieinfo)")
+
+       // self.navigationController?.pushViewController(DetailViewController, animated: true)
+//        self.subbutton2?.setTitle(marker.snippet!, for: UIControlState.normal)
+//        self.subview?.isHidden = false
         
+            }
     }
     
     func callCarwashApi() {
@@ -193,10 +263,10 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
         blank = true
         
         if (elementName == "list") {
-            washItem = [String : String]()
+           // washItem = [String : String]()
             carwash = CarVO()
-            pubTitle = ""
-            contents = ""
+          //  pubTitle = ""
+           // contents = ""
         }
         
         
@@ -218,7 +288,6 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
         if (elementTemp == "apiNewAddress") {
             carwash.address = string
         } else if (elementTemp == "apiName") {
-            pubTitle = string
             carwash.washName = string
         } else if (elementTemp == "apiTel") {
             carwash.tel = string
@@ -244,9 +313,6 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
             
             self.list.append(carwash)
             
-            // washName.text = pubTitle
-            // address.text = contents
-            
         }
         
         print("didEndElement : \(elementName)") // *
@@ -256,23 +322,25 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segue_list" {
             
-            let listVC = segue.destination as? TableViewController  //영화 데이터를 찾은다음, 목적지 뷰 컨트롤러의 mvo 변수에 대입
+            let listVC = segue.destination as? TableViewController
    
-            for row in self.list {
-                let km = distance(lat1: original_address_latitude, lng1: original_address_longitude, lat2: row.latitude!, lng2: row.longitude!)
-                row.kirometer = km
-                
-            }
-
-            self.list.sort(by: { (min, max) -> Bool in
-                min.kirometer! < max.kirometer!
-            })
+            
             
             listVC?.carItem = self.list
-       
-          //  print("키로미터 : \(self.list2[0].kirometer) \n 이름 : \(self.list2[0].washName)")
+            listVC?.lat = self.original_address_latitude
+            listVC?.lon = self.original_address_longitude
+            listVC?.myaddress = self.address
+          
             
+        } else if segue.identifier == "segue_book" {
+            let bookVC = segue.destination as? BookMarkViewController
+            bookVC?.carItem = self.list
+            bookVC?.lat = self.original_address_latitude
+            bookVC?.lon = self.original_address_longitude
+            bookVC?.address = self.address
         }
+        
+        
         
      
     }

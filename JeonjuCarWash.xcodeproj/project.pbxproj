@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D879B0F1FA30753007B2362 /* BookMarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D879B0E1FA30753007B2362 /* BookMarkCell.swift */; };
+		4D879B111FA3108F007B2362 /* BookVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D879B101FA3108F007B2362 /* BookVO.swift */; };
 		4DBF0B351FA2301B0027C3BB /* PanoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBF0B341FA2301B0027C3BB /* PanoView.swift */; };
 		4DC09D251F9C967100ED29A0 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC09D241F9C967100ED29A0 /* TableViewController.swift */; };
 		4DC09D2B1F9C999700ED29A0 /* CarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC09D2A1F9C999700ED29A0 /* CarCell.swift */; };
@@ -16,11 +18,14 @@
 		4DC98FBE1F9C6F1000E9B108 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DC98FBC1F9C6F1000E9B108 /* LaunchScreen.storyboard */; };
 		4DC98FC81F9C717900E9B108 /* CarVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC98FC71F9C717900E9B108 /* CarVO.swift */; };
 		4DC98FCA1F9C727B00E9B108 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC98FC91F9C727B00E9B108 /* MainViewController.swift */; };
+		4DC9E2061FA3007800E604E0 /* BookMarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC9E2051FA3007800E604E0 /* BookMarkViewController.swift */; };
 		4DD4A2CC1F9E09B00091DB81 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD4A2CB1F9E09B00091DB81 /* DetailViewController.swift */; };
 		F6C86DB64EABA5574DBAB9D8 /* Pods_JeonjuCarWash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00D778213B275551EEC9BF4 /* Pods_JeonjuCarWash.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D879B0E1FA30753007B2362 /* BookMarkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkCell.swift; sourceTree = "<group>"; };
+		4D879B101FA3108F007B2362 /* BookVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookVO.swift; sourceTree = "<group>"; };
 		4DBF0B341FA2301B0027C3BB /* PanoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanoView.swift; sourceTree = "<group>"; };
 		4DC09D241F9C967100ED29A0 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		4DC09D2A1F9C999700ED29A0 /* CarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCell.swift; sourceTree = "<group>"; };
@@ -32,6 +37,7 @@
 		4DC98FBF1F9C6F1000E9B108 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DC98FC71F9C717900E9B108 /* CarVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarVO.swift; sourceTree = "<group>"; };
 		4DC98FC91F9C727B00E9B108 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		4DC9E2051FA3007800E604E0 /* BookMarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkViewController.swift; sourceTree = "<group>"; };
 		4DD4A2CB1F9E09B00091DB81 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		679147660B82EC89C8AD7686 /* Pods-JeonjuCarWash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JeonjuCarWash.release.xcconfig"; path = "Pods/Target Support Files/Pods-JeonjuCarWash/Pods-JeonjuCarWash.release.xcconfig"; sourceTree = "<group>"; };
 		6C96DCCCBCAD953610CF3BC9 /* Pods-JeonjuCarWash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JeonjuCarWash.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JeonjuCarWash/Pods-JeonjuCarWash.debug.xcconfig"; sourceTree = "<group>"; };
@@ -73,10 +79,13 @@
 			children = (
 				4DC98FB31F9C6F1000E9B108 /* AppDelegate.swift */,
 				4DC98FC71F9C717900E9B108 /* CarVO.swift */,
+				4D879B101FA3108F007B2362 /* BookVO.swift */,
 				4DC98FC91F9C727B00E9B108 /* MainViewController.swift */,
 				4DC09D241F9C967100ED29A0 /* TableViewController.swift */,
 				4DD4A2CB1F9E09B00091DB81 /* DetailViewController.swift */,
 				4DBF0B341FA2301B0027C3BB /* PanoView.swift */,
+				4DC9E2051FA3007800E604E0 /* BookMarkViewController.swift */,
+				4D879B0E1FA30753007B2362 /* BookMarkCell.swift */,
 				4DC09D2A1F9C999700ED29A0 /* CarCell.swift */,
 				4DC98FB71F9C6F1000E9B108 /* Main.storyboard */,
 				4DC98FBA1F9C6F1000E9B108 /* Assets.xcassets */,
@@ -236,8 +245,11 @@
 				4DC98FC81F9C717900E9B108 /* CarVO.swift in Sources */,
 				4DC09D251F9C967100ED29A0 /* TableViewController.swift in Sources */,
 				4DC98FB41F9C6F1000E9B108 /* AppDelegate.swift in Sources */,
+				4D879B111FA3108F007B2362 /* BookVO.swift in Sources */,
 				4DD4A2CC1F9E09B00091DB81 /* DetailViewController.swift in Sources */,
+				4DC9E2061FA3007800E604E0 /* BookMarkViewController.swift in Sources */,
 				4DC09D2B1F9C999700ED29A0 /* CarCell.swift in Sources */,
+				4D879B0F1FA30753007B2362 /* BookMarkCell.swift in Sources */,
 				4DC98FCA1F9C727B00E9B108 /* MainViewController.swift in Sources */,
 				4DBF0B351FA2301B0027C3BB /* PanoView.swift in Sources */,
 			);
@@ -376,7 +388,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6C96DCCCBCAD953610CF3BC9 /* Pods-JeonjuCarWash.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UL22BZ9D7W;
 				INFOPLIST_FILE = JeonjuCarWash/Info.plist;
@@ -392,7 +404,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 679147660B82EC89C8AD7686 /* Pods-JeonjuCarWash.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UL22BZ9D7W;
 				INFOPLIST_FILE = JeonjuCarWash/Info.plist;
