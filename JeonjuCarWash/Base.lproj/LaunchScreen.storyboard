@@ -16,7 +16,31 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title" translatesAutoresizingMaskIntoConstraints="NO" id="IaY-mH-X6q">
+                                <rect key="frame" x="39" y="78" width="297" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="HbM-lN-seb"/>
+                                    <constraint firstAttribute="width" constant="300" id="mzt-M0-UgY"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car-wash" translatesAutoresizingMaskIntoConstraints="NO" id="zty-Zy-1jD">
+                                <rect key="frame" x="77" y="311" width="221" height="356"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="0H9-04-2ak"/>
+                                    <constraint firstAttribute="height" constant="356" id="COX-aj-oPu"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.62239345437041305" green="0.84729230099395525" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="zty-Zy-1jD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="77" id="3Sh-JJ-bQt"/>
+                            <constraint firstItem="zty-Zy-1jD" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="8Bx-3V-oWg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zty-Zy-1jD" secondAttribute="trailing" constant="77" id="9vX-eC-hW9"/>
+                            <constraint firstItem="IaY-mH-X6q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="39" id="JrZ-TK-KIX"/>
+                            <constraint firstItem="IaY-mH-X6q" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="58" id="ljx-FX-Yng"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IaY-mH-X6q" secondAttribute="trailing" constant="39" id="sAC-Ex-Yf2"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -25,4 +49,8 @@
             <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="car-wash" width="1082" height="1920"/>
+        <image name="title" width="1041" height="396"/>
+    </resources>
 </document>

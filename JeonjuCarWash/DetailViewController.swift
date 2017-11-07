@@ -53,6 +53,12 @@ class DetailViewController : UIViewController {
         star_image.isUserInteractionEnabled = true //사용자로부터 발생하는 이벤트를 받을것인지
         star_image.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(bookMark)))
         
+        let item = UserDefaults.standard.object(forKey: "item") as! [String]
+        for row in item {
+            if (row == self.param.washName) {
+                self.star_image.image = #imageLiteral(resourceName: "star2")
+            }
+        }
         
     }
     
@@ -104,12 +110,16 @@ class DetailViewController : UIViewController {
             print ("markArray === \(row)")
 
         }
+        
+        for (key,value) in UserDefaults.standard.dictionaryRepresentation() {  //userdefaults 전체 출력
+            print ("key = \(key) , value = \(value)")
+        }
     }
     
     func favorite() {
-        if self.check == false {
+        if self.star_image.image == #imageLiteral(resourceName: "star1") {
         star_image.image = #imageLiteral(resourceName: "star2")
-        self.check = true
+        //self.check = true
         var item = UserDefaults.standard.object(forKey: "item") as! [String]
             item.append(self.param.washName!)
             UserDefaults.standard.set(item, forKey: "item")
@@ -130,7 +140,12 @@ class DetailViewController : UIViewController {
          
         } else {
             star_image.image = #imageLiteral(resourceName: "star1")
-            self.check = false
+            var item = UserDefaults.standard.object(forKey: "item") as! [String]
+            let indexx = item.index(of: self.param.washName!)
+            item.remove(at: indexx!)
+            UserDefaults.standard.set(item, forKey: "item")
+            UserDefaults.standard.synchronize()
+        //    self.check = false
             
             
             

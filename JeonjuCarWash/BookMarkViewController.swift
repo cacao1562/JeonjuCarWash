@@ -14,11 +14,11 @@ class BookMarkViewController : UITableViewController {
     var carItem : [CarVO] = []
     var item = UserDefaults.standard.object(forKey: "item") as? [String] ?? ["즐겨찾기가 없습니다"]
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-     
-        
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        self.item = (UserDefaults.standard.object(forKey: "item") as? [String])!
+        tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

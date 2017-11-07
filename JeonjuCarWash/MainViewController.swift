@@ -79,21 +79,21 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
         
         self.view.addSubview(self.mapView!)
         
-        for row in self.list {
-            let km = distance(lat1: self.original_address_latitude, lng1: self.original_address_longitude, lat2: row.latitude!, lng2: row.longitude!)
-            row.kirometer = km
-        }
         
-        //현재위치로부터 거리값이 작은순으로 정렬
-        self.list.sort(by: { (min, max) -> Bool in
-            min.kirometer! < max.kirometer!
-        })
         
-
+      
         let plist = UserDefaults.standard
+        
+        if UserDefaults.standard.string(forKey: "check") != nil {
+            
+        } else {
         let item = [String]()
-        plist.set(item, forKey: "item")
-        plist.synchronize()
+           plist.set(item, forKey: "item")
+        plist.set("false", forKey: "check")
+            plist.synchronize()
+      //  let check = plist.bool(forKey: "check")
+       
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -133,6 +133,17 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
                 self.address = address
                 print("현재주소 ==== \(address)")
             }
+            
+            for row in self.list {
+                let km = distance(lat1: self.original_address_latitude, lng1: self.original_address_longitude, lat2: row.latitude!, lng2: row.longitude!)
+                row.kirometer = km
+            }
+            
+            //현재위치로부터 거리값이 작은순으로 정렬
+            self.list.sort(by: { (min, max) -> Bool in
+                min.kirometer! < max.kirometer!
+            })
+            
             
             self.locationManager.stopUpdatingLocation()
         }
