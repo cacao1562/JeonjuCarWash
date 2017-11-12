@@ -13,9 +13,6 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
     var original_address_longitude:CLLocationDegrees = 0.0
     var mapView:GMSMapView? = nil //구글맵 뷰 객체//
    
-    var subview : UIView? = nil
-    var subbutton : UIButton? = nil
-    var subbutton2 : UIButton? = nil
     var locationManager: CLLocationManager = CLLocationManager()
 
     
@@ -35,30 +32,22 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
     var blank: Bool = false
     
     
-//    var washItems = [[String : String]]() // 영화 item Dictional Array
-//    var washItem = [String: String]()     // 영화 item Dictionary
-//
-//    var pubTitle = "" // 영화 제목
-//    var contents = "" // 영화 내용
-    
   
     
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        callCarwashApi()
-        self.navigationController?.navigationBar.backgroundColor = UIColor.purple
+        self.navigationController?.navigationBar.backgroundColor = UIColor(red:0.46, green:0.75, blue:0.96, alpha:1.0)
         
+        callCarwashApi()
         
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        //self.locationManager = CLLocationManager()
         self.locationManager.delegate = self
-        //self.locationManager.requestWhenInUseAuthorization()
+       // self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.requestAlwaysAuthorization()
         
         self.locationManager.startUpdatingLocation()
-      //  self.locationManager.startUpdatingLocation()
         self.locationManager.pausesLocationUpdatesAutomatically = false
        
         //구글맵 설정//
@@ -69,7 +58,7 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
         
         self.mapView?.delegate = self
         self.locationManager.delegate = self
-        //  self.locationManager.requestAlwaysAuthorization()
+        
         
         self.mapView?.mapType = .normal  //지도의 타입 변경가능//
         self.mapView?.isIndoorEnabled = false  //실내지도 on/off설정//
@@ -78,7 +67,7 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
         self.mapView?.settings.myLocationButton = true  //나의 위치정보 알기 버튼//
         
         self.view.addSubview(self.mapView!)
-        
+        //self.view = self.mapView!
         
         
       
@@ -88,21 +77,14 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
             
         } else {
         let item = [String]()
-           plist.set(item, forKey: "item")
-        plist.set("false", forKey: "check")
+            plist.set(item, forKey: "item")
+            plist.set("false", forKey: "check")
             plist.synchronize()
-      //  let check = plist.bool(forKey: "check")
-       
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let coor = manager.location?.coordinate {
-            //latitude:위도, longitude:경도
-            
-            //                locations = CLLocation(latitude: coor.latitude, longitude: coor.longitude)
-            //
-            //                convertToAddressWith(coordinate: location!)
             
             self.original_address_latitude = coor.latitude
             self.original_address_longitude = coor.longitude
@@ -116,6 +98,7 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
             
             let location = CLLocation(latitude: coor.latitude, longitude: coor.longitude)
             let geoCoder = CLGeocoder()
+            
             geoCoder.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
                 if error != nil {
                     NSLog("\(error)")
@@ -126,13 +109,10 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
                         return
                 }
                 let address = addrList.joined(separator: " ")
-//                let obj = DetailViewController()
-//                obj.lat = coor.latitude
-//                obj.lon = coor.longitude
-//                obj.which = address
+
                 self.address = address
                 print("현재주소 ==== \(address)")
-            }
+                }
             
             for row in self.list {
                 let km = distance(lat1: self.original_address_latitude, lng1: self.original_address_longitude, lat2: row.latitude!, lng2: row.longitude!)
@@ -150,51 +130,12 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
     }
     
  
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        print("viewWillAppear")
-        print("lat =  \(self.original_address_latitude)")
-        print("lon = \(self.original_address_longitude)")
-        
-    }
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
- 
-     
         
         
-      //  self.view = self.mapView!
-        
-        self.subview = UIView()
-        self.subbutton = UIButton(type: UIButtonType.system)
-        self.subbutton2 = UIButton(type: UIButtonType.system)
-        
-        self.subview?.frame = CGRect(x: 0, y: self.view.frame.height/2+110, width: self.view.frame.width, height: self.view.frame.size.height/2-110)
-        self.subview?.backgroundColor = UIColor.white
-        self.subview?.layer.cornerRadius = 10
-        
-        self.subbutton?.frame = CGRect(x: 0, y: (self.subview?.frame.size.height)!/3*2, width: self.view.frame.width/2, height: (self.subview?.frame.size.height)!/3 )
-        self.subbutton?.setTitle("자세히 보기", for: UIControlState.normal)
-        self.subbutton?.backgroundColor = UIColor.gray
-        self.subbutton?.layer.cornerRadius = 10
-        
-        self.subbutton2?.frame = CGRect(x: self.view.frame.width/2, y: (self.subview?.frame.size.height)!/3*2, width: self.view.frame.width/2, height: (self.subview?.frame.size.height)!/3 )
-        self.subbutton2?.setTitle("닫 기", for: UIControlState.normal)
-        self.subbutton2?.backgroundColor = UIColor.gray
-        self.subbutton2?.layer.cornerRadius = 10
-        
-        
-        self.subview?.addSubview(self.subbutton!)
-        self.subview?.addSubview(self.subbutton2!)
-        
-        
-        self.view.addSubview(self.subview!)
-        
-        
-        self.subview?.isHidden = true
         for row in self.list {
             let position = CLLocationCoordinate2D(latitude: row.latitude!, longitude: row.longitude!)
             let marker = GMSMarker()
@@ -211,13 +152,12 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
         print("viewDidAppear")
         print("lat =  \(self.original_address_latitude)")
         print("lon = \(self.original_address_longitude)")
-        print("서울역-강남역 거리 :\(distance(lat1: 37.554521, lng1: 126.9684596, lat2: 37.4979462, lng2: 127.0254323))")
-        // 서울역 - 강남역 거리
+      
         
         
     }
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        self.subview?.isHidden = true
+       //맵 터치 했을때
     }
 
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
@@ -237,15 +177,9 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
                 
                 self.navigationController?.pushViewController(uvc, animated: true)
                 }
-        //let movieinfo = self.list[path!.row]  //api 영화 데이터배열 중에서 선택된 행에 대한 데이터 추출
-       // NSLog("///Log data value /// \n \(movieinfo)")
-
-       // self.navigationController?.pushViewController(DetailViewController, animated: true)
-//        self.subbutton2?.setTitle(marker.snippet!, for: UIControlState.normal)
-//        self.subview?.isHidden = false
         
             }
-    }
+        }
     
     func callCarwashApi() {
         let baseURL = "http://openapi.jeonju.go.kr/rest/carwashservice/getCarWash?ServiceKey=y5HKUUPNVoPnZ%2BPqXjIFKYWQL%2BhY5v%2B0e0LE6DJV29kwS1XBS5ZR00ueXE%2BXNQM1O48PswM3e%2FOla81akkXFKw%3D%3D&pageNo=\(self.page)&numOfRows=286" // xml 파일이 있는 url 주소입니다.
@@ -256,7 +190,7 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
         
         xmlParser!.parse()
         
-    }
+        }
     
     
     
@@ -268,14 +202,14 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
         
         print("didStartElement : \(elementName)") // *
         
-        elementTemp = elementName
+        self.elementTemp = elementName
         // 공백에 대한 처리
         
         blank = true
         
         if (elementName == "list") {
            // washItem = [String : String]()
-            carwash = CarVO()
+            self.carwash = CarVO()
           //  pubTitle = ""
            // contents = ""
         }
@@ -312,31 +246,22 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
             carwash.longitude = ((string as NSString).doubleValue)
         }
         
-        
-        
-        
     }
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        
-        
+
         if (elementName == "list") {
-            
             self.list.append(carwash)
-            
         }
         
-        print("didEndElement : \(elementName)") // *
-        
+        print("didEndElement : \(elementName)")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segue_list" {
             
             let listVC = segue.destination as? TableViewController
-   
-            
-            
+ 
             listVC?.carItem = self.list
             listVC?.lat = self.original_address_latitude
             listVC?.lon = self.original_address_longitude
@@ -350,26 +275,14 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
             bookVC?.lon = self.original_address_longitude
             bookVC?.address = self.address
         }
-        
-        
-        
-     
-    }
-    
-    
-    
-    
+
+      }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    
-    func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
-        return CGRect(x: x, y: y, width: width, height: height)
-    }
-    
-    
+ 
     // 구 삼각법을 기준으로 대원거리(m단위) 요청
     func distance(lat1: Double, lng1: Double, lat2: Double, lng2: Double) -> Double {
         
@@ -398,7 +311,9 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
     }
     
     
-
+    func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
+        return CGRect(x: x, y: y, width: width, height: height)
+    }
     
 }
 

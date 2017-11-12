@@ -11,16 +11,12 @@ class TableViewController : UITableViewController {
     var lon : Double?
     var myaddress : String?
     
-    var bookmark = [String]()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-        
-        // self.carItem = obj.list
-        self.tableView.reloadData()
-    }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        self.tableView.reloadData()
+//    }
     
 
     
@@ -35,7 +31,7 @@ class TableViewController : UITableViewController {
         
         cell.title.text = row.washName
         cell.address.text = row.address
-        let km = row.kirometer?.roundToPlaces(places: 2)
+        let km = row.kirometer?.roundToPlaces(places: 2) //소수점 2자리까지
         cell.kilometer?.text = "\(km!) km"
         
         return cell
@@ -44,21 +40,6 @@ class TableViewController : UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-//        if (segue.identifier=="segue_detail") {
-//
-//            //선택된 셀의 행 정보
-//            let path = self.tableView.indexPath(for: sender as! UITableViewCell)
-//
-//            //선택된 셀에 사용된 데이터
-//            let data = self.carItem[path!.row]
-//            NSLog("///Log data value /// \n \(data)")
-//
-////            let detailVC = segue.destination as? DetailViewController
-////            detailVC?.param = [data]
-//            //세그웨이가 이동할 목적지 뷰 컨트롤러 객체를 구하고, 선언된 param 변수에 데이터를 연결
-//            (segue.destination as? DetailViewController)?.param = [data]
-//
-//        }
         
         if segue.identifier == "segue_detail" { //실행된 세그웨이의 식별자가 ""이라면
             

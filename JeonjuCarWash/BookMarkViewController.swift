@@ -32,15 +32,13 @@ class BookMarkViewController : UITableViewController {
         let row = self.item[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookCell") as! BookMarkCell
         cell.washName.text = row
-    
-        
+
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-       
-        
+      
         for row in self.carItem {
             if (row.washName == self.item[indexPath.row]) {
         guard let uvc = self.storyboard?.instantiateViewController(withIdentifier: "DetailView") as? DetailViewController else {

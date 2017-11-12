@@ -2,7 +2,6 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ic_local_car_wash_3@.png",
       "scale" : "1x"
     },
     {
@@ -11,6 +10,7 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "ic_stars2@3x.png",
       "scale" : "3x"
     }
   ],
