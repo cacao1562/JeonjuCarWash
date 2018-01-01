@@ -18,7 +18,6 @@ class TableViewController : UITableViewController {
 //        self.tableView.reloadData()
 //    }
     
-
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.carItem.count
@@ -50,19 +49,17 @@ class TableViewController : UITableViewController {
             let movieinfo = self.carItem[path!.row]  //api 영화 데이터배열 중에서 선택된 행에 대한 데이터 추출
             NSLog("///Log data value /// \n \(movieinfo)")
             
-            let detailVC = segue.destination as? DetailViewController  
+            let detailVC = segue.destination as? DetailViewController
             
             detailVC?.param = movieinfo
             detailVC?.lat = self.lat!
             detailVC?.lon = self.lon!
             detailVC?.myaddress = self.myaddress!
-            
           
             
         }
     
-    
-    
+
     }
     
  

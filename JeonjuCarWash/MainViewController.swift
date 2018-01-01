@@ -15,7 +15,6 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
    
     var locationManager: CLLocationManager = CLLocationManager()
 
-    
     var page = 1
     
     lazy var list : [CarVO] = {
@@ -24,21 +23,20 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
     }()
     
     var carwash : CarVO!
-    
     var elementTemp = ""
-    
     var address : String?
-    
     var blank: Bool = false
     
-    
-  
-    
+
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        self.navigationController?.navigationBar.backgroundColor = UIColor(red:0.46, green:0.75, blue:0.96, alpha:1.0)
+        
+        //self.navigationController?.navigationBar.backgroundColor = UIColor(red:0.46, green:0.75, blue:0.96, alpha:1.0)
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor(red:82/255.0, green:166/255.0, blue:223/255.0, alpha:10.0)
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         
         callCarwashApi()
         
@@ -51,29 +49,27 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
         self.locationManager.pausesLocationUpdatesAutomatically = false
        
         //구글맵 설정//
-        let camera = GMSCameraPosition.camera(withLatitude: 35.823925, longitude: 127.147863, zoom: 16)
+        let camera = GMSCameraPosition.camera(withLatitude: 35.823925, longitude: 127.147863, zoom: 16) //전주시청 위도,경도
         self.mapView = GMSMapView.map(withFrame: self.CGRectMake(0, 0, self.view.frame.width, self.view.frame.height), camera:camera)
-        
+    
         //이벤트 등록//
         
         self.mapView?.delegate = self
-        self.locationManager.delegate = self
-        
+        //self.locationManager.delegate = self
         
         self.mapView?.mapType = .normal  //지도의 타입 변경가능//
         self.mapView?.isIndoorEnabled = false  //실내지도 on/off설정//
         self.mapView?.isMyLocationEnabled = true   //나의 위치정보 설정(GPS상황에 따라 환경이 달라질 수 있다.). 나의 현재위치로 한번에 이동할 수 있는 버튼 등록//
         self.mapView?.settings.compassButton = true  //나침반 표시//
         self.mapView?.settings.myLocationButton = true  //나의 위치정보 알기 버튼//
-        
+    
         self.view.addSubview(self.mapView!)
         //self.view = self.mapView!
         
         
-      
         let plist = UserDefaults.standard
         
-        if UserDefaults.standard.string(forKey: "check") != nil {
+        if plist.string(forKey: "check") != nil {
             
         } else {
         let item = [String]()
@@ -141,12 +137,15 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
             let marker = GMSMarker()
             marker.position = position
             marker.snippet = row.washName
+            marker.userData = row.address
             marker.appearAnimation = .pop
             
-            //                    marker.title = row.washName
+            //  marker.title = row.washName
             marker.map = self.mapView  //nil 마커 제거
 
             }
+        
+       
 
         
         print("viewDidAppear")
@@ -162,9 +161,16 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
 
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         print("인포 윈도우")
+        if (original_address_latitude == 0.0 || original_address_longitude == 0.0) {
+            let alert = UIAlertController(title: "알림", message: "설정 - 위치 접근 허용해주세요. \n 확인을 누르면 앱이 종료됩니다.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action) in
+                exit(0) //앱 종료
+            }))
+            self.present(alert, animated: true)
+        } else {
         for row in self.list {
-            if (row.washName! == marker.snippet!) {
-                print("row washName = \(row.washName!)")
+            if (row.address! == marker.userData as! String) {
+                print("row address = \(row.address!)")
                 
                 
                 guard let uvc = self.storyboard?.instantiateViewController(withIdentifier: "DetailView") as? DetailViewController else {
@@ -179,6 +185,7 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
                 }
         
             }
+        }
         }
     
     func callCarwashApi() {
@@ -259,6 +266,14 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segue_list" {
+            if (original_address_latitude == 0.0 || original_address_longitude == 0.0) {
+                let alert = UIAlertController(title: "알림", message: "설정 - 위치 접근 허용해주세요. \n 확인을 누르면 앱이 종료됩니다.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action) in
+                    exit(0) //앱 종료
+                }))
+                
+                self.present(alert, animated: true)
+            }
             
             let listVC = segue.destination as? TableViewController
  
@@ -279,9 +294,7 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
       }
 
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+   
  
     // 구 삼각법을 기준으로 대원거리(m단위) 요청
     func distance(lat1: Double, lng1: Double, lat2: Double, lng2: Double) -> Double {
@@ -313,6 +326,14 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
     
     func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
         return CGRect(x: x, y: y, width: width, height: height)
+    }
+    
+   
+    
+   
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
 }

@@ -5,6 +5,7 @@ import GoogleMaps
 import MapKit
 
 
+
 class DetailViewController : UIViewController {
     
     var param = CarVO()
@@ -19,6 +20,7 @@ class DetailViewController : UIViewController {
     @IBOutlet var regdate: UILabel!
     @IBOutlet var star_image: UIImageView!
     
+    @IBOutlet weak var bottom_view: UIView!
     var check = false
     
     var mark = [String]()
@@ -47,6 +49,7 @@ class DetailViewController : UIViewController {
         
         marker.tracksInfoWindowChanges = true
         marker.map = self.mapview
+       
         self.view.addSubview(self.mapview!)
         
         star_image.isUserInteractionEnabled = true //사용자로부터 발생하는 이벤트를 받을것인지
@@ -114,7 +117,7 @@ class DetailViewController : UIViewController {
             UserDefaults.standard.synchronize()
             
         
-        } else {
+        } else if (self.star_image.image == #imageLiteral(resourceName: "star2")){
             self.star_image.image = #imageLiteral(resourceName: "star1")
             var item = UserDefaults.standard.object(forKey: "item") as! [String]
             let indexx = item.index(of: self.param.washName!)

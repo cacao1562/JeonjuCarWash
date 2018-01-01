@@ -75,6 +75,7 @@
 		4DC98FB21F9C6F1000E9B108 /* JeonjuCarWash */ = {
 			isa = PBXGroup;
 			children = (
+				4DFB3E291FED068000968723 /* Cell */,
 				4DC98FB31F9C6F1000E9B108 /* AppDelegate.swift */,
 				4DC98FC71F9C717900E9B108 /* CarVO.swift */,
 				4DC98FC91F9C727B00E9B108 /* MainViewController.swift */,
@@ -82,14 +83,21 @@
 				4DD4A2CB1F9E09B00091DB81 /* DetailViewController.swift */,
 				4DBF0B341FA2301B0027C3BB /* PanoView.swift */,
 				4DC9E2051FA3007800E604E0 /* BookMarkViewController.swift */,
-				4D879B0E1FA30753007B2362 /* BookMarkCell.swift */,
-				4DC09D2A1F9C999700ED29A0 /* CarCell.swift */,
 				4DC98FB71F9C6F1000E9B108 /* Main.storyboard */,
 				4DC98FBA1F9C6F1000E9B108 /* Assets.xcassets */,
 				4DC98FBC1F9C6F1000E9B108 /* LaunchScreen.storyboard */,
 				4DC98FBF1F9C6F1000E9B108 /* Info.plist */,
 			);
 			path = JeonjuCarWash;
+			sourceTree = "<group>";
+		};
+		4DFB3E291FED068000968723 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4D879B0E1FA30753007B2362 /* BookMarkCell.swift */,
+				4DC09D2A1F9C999700ED29A0 /* CarCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		9BCDEA6F3711F4D4766062C2 /* Pods */ = {
@@ -321,7 +329,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -372,7 +380,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -388,6 +396,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UL22BZ9D7W;
 				INFOPLIST_FILE = JeonjuCarWash/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Test.JeonjuCarWash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -404,6 +413,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UL22BZ9D7W;
 				INFOPLIST_FILE = JeonjuCarWash/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Test.JeonjuCarWash;
 				PRODUCT_NAME = "$(TARGET_NAME)";

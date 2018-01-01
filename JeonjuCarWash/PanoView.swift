@@ -8,6 +8,7 @@ class PanoView : UIViewController, GMSMapViewDelegate {
     var lat : Double?
     var lon : Double?
     
+    
     override func loadView() {
         
         let panoView = GMSPanoramaView(frame: .zero)
