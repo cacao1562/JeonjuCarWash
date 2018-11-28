@@ -27,7 +27,6 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
     var address : String?
     var blank: Bool = false
     
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,7 +93,20 @@ class MainViewController: UIViewController,XMLParserDelegate, GMSMapViewDelegate
             
             let location = CLLocation(latitude: coor.latitude, longitude: coor.longitude)
             let geoCoder = CLGeocoder()
-            
+            geoCoder.geocodeAddressString(("전라북도 전주시 덕진구 떡전5길 12 (금암동)"), completionHandler: {(placemarks, error) -> Void in
+                
+                if let placemark = placemarks?.first {
+                    let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate
+                    coordinates.latitude
+                    coordinates.longitude
+                    
+                    
+                    var lat = coordinates.latitude
+                    var long = coordinates.longitude
+                    print("lat \(lat)")
+                    print("long \(long)")
+                }
+            })
             geoCoder.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
                 if error != nil {
                     NSLog("\(error)")
